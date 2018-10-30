@@ -11,3 +11,34 @@
 
   <body>
     <div id="container">
+      <div class="header-image">
+          <img src="static/bingelifelogo.png" alt="-">
+      </div>
+        <div class="header">
+            <h1>BingeLife - {{ title }}</h1>
+          </div>
+          <div class="top">
+            <div class="search">
+              <form action="/ergebnisse">
+                <input class="input-txt" type="text" name="q" />
+                <input class="input-btn" type="submit" value="Suchen">
+              </form>
+            </div>
+          
+            <div class="menu">
+              <div class="menu-content">
+                <a class="menu-link" href="/home">
+                  Home
+                </a>
+                <a class="menu-link">
+                  About
+                </a>
+                <a class="menu-link">
+                  Contact
+                </a>
+              </div>
+              <div class="menu-icon">
+                <div></div>
+              </div>
+            </div>
+          </div>

@@ -1,0 +1,26 @@
+{% include "header.html" %}
+
+
+<div class="series-header-container">
+    <h1 class="allseries">Alle Serien</h1>
+</div>
+
+
+{% for serie in result %}
+
+<div class="serie-item">
+    <div class="serie-header">
+        <h1 class="serie-title">{{ serie.seriesname }}</h1>
+    </div>
+    <div class="serie-image">
+        <img src="https://www.thetvdb.com/banners/posters/{{ serie.id }}-1.jpg"  alt="serie-image" onerror="this.src='static/fallback-img.jpg'" />
+    </div>
+    <div class="serie-description">
+        <a href="/mehr?id={{ serie.id }}">Mehr Informationen</a>
+    </div>
+    <hr />
+</div>
+
+{% endfor %}
+
+{% include "footer.html" %}

@@ -58,3 +58,38 @@ app = Flask(__name__)
 @app.route("/home")
 def index():
     return render_template("home.html", title="Home")
+
+
+@app.route("/ergebnisse")
+def ergebnisse():
+    args = request.args.to_dict()
+    suche = args.get('q')
+    result = []
+    try:
+        connection = connect_db()
+        with connection.cursor() as cursor:
+            sql = "SELECT * FROM tvseries WHERE seriesname LIKE %s"
+            cursor.execute(sql, ("%"+suche+"%",))
+            result = cursor.fetchall()
+    finally:
+        connection.close()
+        
+    return render_template("ergebnisse.html", result=result, title="Ergebnisse")
+
+
+@app.route("/mehr")
+def mehr():
+    args = request.args.to_dict()
+    SerieId = args.get("id")
+    result = []
+
+    try:
+        connection = connect_db()
+        with connection.cursor() as cursor:
+            sql = "SELECT * FROM tvseries WHERE id = %s"
+            cursor.execute(sql, (SerieId,))
+            result = cursor.fetchall()
+    finally:
+        connection.close()
+
+    return render_template("mehr.html", serie=result[0], title="Mehr")

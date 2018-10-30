@@ -17,6 +17,18 @@ So werden ungewollte abstände vermieden
   outline: none;
 }
 
+.header-image {
+  width: 100%;
+  height: 120px;
+  display: grid;
+  place-content: center;
+  border-radius: 100%;
+}
+
+.header-image img {
+  height: 120px;
+}
+
 .top {
   position: -webkit-sticky;
   position: sticky;
@@ -84,6 +96,7 @@ So werden ungewollte abstände vermieden
   color: #fff;
   font-family: monospace;
   font-size: 40px;
+  text-decoration: none;
 }
 
 .menu-link:hover{
@@ -149,3 +162,80 @@ So werden ungewollte abstände vermieden
         max-width: 100%;
     }
 }
+
+.series-header-container {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 40px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #0336FF;
+}
+
+.allseries {
+  font-family: monospace;
+  color: #fff;
+}
+
+.serie-item {
+  width: 100%;
+}
+
+.serie-header {
+  width: 100%;
+  height: 60px;
+  display: grid;
+  place-content: center;
+}
+
+.serie-title {
+  font-family: monospace;
+}
+
+.serie-image {
+  width: 100%;
+  height: auto;
+}
+
+.serie-image img {
+  width: 100%;
+}
+
+.serie-description{
+  width: 100%;
+  height: 40px;
+}
+
+.serie-description a{
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.serie-description-complete p {
+  font-family: monospace;
+}
+
+.serie-description-complete span {
+  font-size: 15px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.footer-section {
+  width: 100%;
+  height: 100px;
+  background-color: #000;
+  display: grid;
+  place-content: center;
+}
+
+.footer-section img {
+  height: 40%;
+}
+
+.footer-section p {
+  font-family: monospace;
+  color: #fff;
+}
+
