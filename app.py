@@ -1,3 +1,7 @@
+# app.py - Python file der WebApp
+# Hier werden die verschiedenen routes bestimmt und die Datenbanke verbindung + template rendering gemacht.
+#
+
 from flask import Flask, render_template, request
 import pymysql.cursors
 
@@ -74,7 +78,7 @@ def ergebnisse():
 
     finally:
         connection.close()
-        
+
     return render_template("ergebnisse.html", result=result, title="Ergebnisse")
 
 
@@ -93,12 +97,12 @@ def mehr():
             result = cursor.fetchall()
 
         with connection.cursor() as c:
-            sql = "SELEct genres.genre from genres join seriesgenre on genres.id = seriesgenre.genreid join tvseries on seriesgenre.seriesid = tvseries.id  where tvseries.id = %s"
+            sql = "SELECT genres.genre FROM genres JOIN seriesgenre ON genres.id = seriesgenre.genreid JOIN tvseries ON seriesgenre.seriesid = tvseries.id  WHERE tvseries.id = %s"
             c.execute(sql, (SerieId,))
             genreList = c.fetchall()
     finally:
         connection.close()
 
-    
+
 
     return render_template("mehr.html", serie=result[0], title="Mehr", genres=genreList)

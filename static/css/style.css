@@ -5,6 +5,9 @@ _________   _________ _________
 \     \____/        \/        \
  \______  /_______  /_______  /
         \/        \/        \/
+
+Alle Styles der WebApp kommen aus diesem file und werden per tagname oder klasse zugewiesen.
+
 */
 
 /*
@@ -290,4 +293,19 @@ So werden ungewollte abstände vermieden
   font-family: monospace;
   color: #000;
   font-size: 30px;
+}
+
+.movie-ad p {
+  font-family: monospace;
+  margin: 8px;
+  position: absolute;
+}
+
+.genres {
+  font-family: monospace;
+}
+
+.genres span {
+  font-weight: bold;
+  font-size: 15px;
 }
