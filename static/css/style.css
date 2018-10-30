@@ -271,18 +271,23 @@ So werden ungewollte abstände vermieden
   height: 175px;
   background-color: #FF4B49;
   z-index: 10;
+  background-image: url("https://www.proprofs.com/quiz-school/topic_images/p193ihd8hle998s0rgpqmkb3.jpg");
+  background-size: contain;
 }
 
 .ad-close {
-  width: 100px;
-  height: 100px;
+  width: 40px;
+  height: 40px;
   z-index: 11;
   float: right;
 }
 
-.add_close img {
-  position: relative;
-  top: 0;
-  right: 0;
-  height: 100%;
+.ad-close:hover span {
+  color: #000;
+}
+
+.ad-close span {
+  font-family: monospace;
+  color: #000;
+  font-size: 30px;
 }
