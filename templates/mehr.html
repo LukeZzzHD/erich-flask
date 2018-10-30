@@ -1,23 +1,66 @@
-{% include "header.html" %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BingeLife - {{ title }}</title>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="static/js/script.js" charset="utf-8"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 
-<div class="mehr">
-    <div class="serie-header">
-        <h1 class="serie-title">{{ serie.seriesname }}</h1>
-    </div>
-    <div class="serie-image">
-        <img src="https://www.thetvdb.com/banners/posters/{{ serie.id }}-1.jpg" alt="Image Could not load" onerror="this.src='static/fallback-img.jpg'" />
-    </div>
-    <div class="serie-description-complete">
-        <p><span>Status: </span>{{ serie.status }}</p>
-        <hr />
-        <p><span>Network: </span>{{ serie.network }}</p>
-        <hr />
-        <p><span>Description: </span>{{ serie.overview }}</p>
-        <hr />
-        <p><span>Rating: </span>{{ serie.rating }}</p>
-        <hr />
-        <p><span>Hits: </span>{{ serie.hits }}</p>
-    </div>
-</div>
+  <body>
+    <div id="container">
+      <div class="header-image">
+          <img src="static/bingelifelogo.png" alt="-">
+      </div>
+        <div class="header">
+            <h1>BingeLife - {{ title }}</h1>
+          </div>
+          <div class="top">
+            <div class="search">
+              <form action="/ergebnisse">
+                <input class="input-txt" type="text" name="q" />
+                <input class="input-btn" type="submit" value="Suchen">
+              </form>
+            </div>
+          
+            <div class="back">
+                <button class="btn-back" onclick="window.history.back()">Back to results</button>
+            </div>
+          </div>
+
+        <div class="mehr">
+            <div class="serie-header">
+                <h1 class="serie-title">{{ serie.seriesname }}</h1>
+            </div>
+            <div class="serie-image">
+                <img src="https://www.thetvdb.com/banners/posters/{{ serie.id }}-1.jpg" alt="Image Could not load" onerror="this.src='static/fallback-img.jpg'" />
+            </div>
+            <div class="serie-description-complete">
+                <p><span>Status: </span>{{ serie.status }}</p>
+                <hr />
+                <p><span>Network: </span>{{ serie.network }}</p>
+                <hr />
+                <p><span>Description: </span>{{ serie.overview }}</p>
+                <hr />
+                <p><span>Rating: </span>{{ serie.rating }}</p>
+                <hr />
+                <p><span>Hits: </span>{{ serie.hits }}</p>
+            </div>
+            <div class="genres">
+                <p>
+                    <span>Genres: </span>
+                    {% for genre in genres %}
+                        {{ genre["genre"] }}
+
+                        {% if not loop.last %}
+                        ,
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            
+            </div>
+        </div>
 
 {% include "footer.html" %}

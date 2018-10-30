@@ -71,6 +71,7 @@ def ergebnisse():
             sql = "SELECT * FROM tvseries WHERE seriesname LIKE %s"
             cursor.execute(sql, ("%"+suche+"%",))
             result = cursor.fetchall()
+
     finally:
         connection.close()
         
@@ -82,6 +83,7 @@ def mehr():
     args = request.args.to_dict()
     SerieId = args.get("id")
     result = []
+    genreList = []
 
     try:
         connection = connect_db()
@@ -89,7 +91,14 @@ def mehr():
             sql = "SELECT * FROM tvseries WHERE id = %s"
             cursor.execute(sql, (SerieId,))
             result = cursor.fetchall()
+
+        with connection.cursor() as c:
+            sql = "SELEct genres.genre from genres join seriesgenre on genres.id = seriesgenre.genreid join tvseries on seriesgenre.seriesid = tvseries.id  where tvseries.id = %s"
+            c.execute(sql, (SerieId,))
+            genreList = c.fetchall()
     finally:
         connection.close()
 
-    return render_template("mehr.html", serie=result[0], title="Mehr")
+    
+
+    return render_template("mehr.html", serie=result[0], title="Mehr", genres=genreList)
